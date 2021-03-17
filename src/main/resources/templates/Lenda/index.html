@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>Lenda Manager</title>
+
+</head>
+
+<body>
+<div align="center">
+    <h1>Lista e Lendeve</h1>
+    <a href="/Lenda/new">Krijo nje Lende te re</a>
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+            <tr>
+            	<th>id lende</th>
+                <th>emri</th>
+                <th>kredite</th>
+                <th>simestri</th>
+                <th>dega</th>  
+                <th>actions</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="lenda : ${listLende}">
+            
+            	<td th:text="${lenda.id}">ID Lende</td>
+                <td th:text="${lenda.emri}">emri</td>
+                <td th:text="${lenda.kredite}">kredite</td>
+                <td th:text="${lenda.simestri}">kredite</td>
+                <td th:text="${lenda.dega.emri}"></td> 
+                <!-- <td th:text="${dega.profili}">pass</td> -->
+                <td>
+                    <a th:href="@{'/Lenda/edit/' + ${lenda.id}}">Edit</a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a th:href="@{'/Lenda/delete/' + ${lenda.id}}">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>   
+</body>
+</html>

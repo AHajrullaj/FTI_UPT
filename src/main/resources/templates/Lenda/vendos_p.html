@@ -1,0 +1,29 @@
+   <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<title>Vendo pedagog</title>
+</head>
+<body >
+    <div align="center">
+     <form action="#" th:action="@{/saveLendPedagog}" th:object="${lendP}"
+            method="post">
+     <table>
+     
+        	<tr>
+        		
+                <td>Vendo Pedagog</td>
+                <td><select th:field="*{pedagog}">
+					    <option th:each="b: ${listPedagog}" th:value="${b.id}" th:text="${b.firstname}+${b.lastname}" />
+					  </select>
+                </td>
+                </tr> 
+            <tr>
+                    <td colspan="2"><button type="submit">Save</button> </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>

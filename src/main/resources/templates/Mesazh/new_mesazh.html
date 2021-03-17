@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<meta charset="utf-8" />
+<title>Create New Mesazh</title>
+ <script>
+function myFunction() {
+	var today = new Date();
+	var dd = String(today.getDate()).padStart(2, '0');
+	var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+	var yyyy = today.getFullYear();
+
+	today = yyyy + '-' + mm + '-' +dd ;
+	
+	document.getElementById("i1").value= today;
+	/* innerHTML = '<input type="date" max="'+today+'" th:field="*{dtRegjistrimi}" />';
+ */}
+</script>
+</head>
+<body onload="myFunction()">
+    <div align="center">
+        <h1>Create New Mesazh</h1>
+        <br />
+        <form action="#" th:action="@{/saveMesazh}" th:object="${mesazh}"method="post">
+ 			 <div th:object="${student}" >
+            	<table border="0" cellpadding="10">
+            
+            	 
+                <tr>
+                    <td>E-mail:</td>
+                    <td><input type="text" th:field="*{email}" readonly="readonly"  /></td>
+                </tr> 
+                </table>
+                </div>
+                <table>
+                <tr>
+                    <td>E-mail Marresit:</td>
+                    <td><input type="text" th:field="*{emailM}"   name="hint" /></td>
+                </tr>
+                 
+                <tr>
+                    <td>Titulli:</td>
+                    <td><input type="text" th:field="*{title}"   /></td>
+                </tr>
+                
+                <tr>
+                    <td>Permbajtja:</td>
+                    <td><textarea  type="text" th:field="*{subject}">...</textarea>   </td>
+                </tr>
+                
+                <tr>
+                    <td>date:</td>
+                    <td><input id="i1" type="text"  th:field="*{dtDerg}" /></td>
+                    
+                </tr>
+                 
+            </table>
+            <button type="submit">Save</button>
+       
+        </form>
+    </div>
+ 
+</body>
+</html>

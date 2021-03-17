@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>Sekretari Manager</title>
+
+</head>
+
+<body>
+<div align="center">
+    <h1>Sekretari List</h1>
+    <a href="/Sekretari/new">Create New Sekretari</a>
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+            <tr>
+            	<th>Sekretari id</th>
+                <th>firstname</th>
+                <th>lastname</th>
+                <th>email</th>
+                <th>password</th>
+                 
+                <th>actions</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="sekretari : ${listSekretari}">
+            
+            	<td th:text="${sekretari.id}">student ID</td>
+                <td th:text="${sekretari.firstname}">firstName</td>
+                <td th:text="${sekretari.lastname}">lastname</td>
+                <td th:text="${sekretari.email}">lastname</td>
+                <td th:text="${sekretari.pass}">pass</td>
+               
+                <td>
+                 	<a th:href="@{'/Njoftim/new/' + ${sekretari.id}}">bej 1 njoftim</a>
+                 	&nbsp;&nbsp;&nbsp;
+                    <a th:href="@{'/Sekretari/edit/' + ${sekretari.id}}">Edit</a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a th:href="@{'/Sekretari/delete/' + ${sekretari.id}}">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>   
+</body>
+</html>

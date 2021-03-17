@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>Mesazhe te Marra</title>
+
+</head>
+
+<body>
+<div align="center">
+    <h1>Mesage List</h1>
+     
+    <br/><br/>
+    
+    <div th:object="${student}" >
+    <input type="text" th:field="*{firstname}" readonly="readonly" /> <br>
+    <td><input type="text" th:field="*{lastname}" readonly="readonly"/></td>
+    
+    </div>
+    <table border="1" cellpadding="10">
+        <thead>
+            <tr>
+            	<th>Mesazh id</th>
+                <th>Email Derguesi</th>
+                <th>Email Marresi</th>
+                <th>Titulli</th>
+                <th>Permbajtja</th>
+                <th>Data e dergimit</th>
+                
+                
+                
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="Mesazh : ${listMesazhe}">
+            
+            	<td th:text="${Mesazh.id}">student ID</td>
+        		<td th:text="${Mesazh.email}">firstName</td>  
+                <td th:text="${Mesazh.emailM}">lastname</td>
+                <td th:text="${Mesazh.title}">pass</td>
+                <td th:text="${Mesazh.subject}">pass</td>
+                <td th:text="${Mesazh.dtDerg}">lastname</td>
+              
+            </tr>
+        </tbody>
+    </table>
+</div>   
+</body>
+</html>

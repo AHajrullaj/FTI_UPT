@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<title>Create New Pedagog</title>
+ 
+</head>
+<body onload="myFunction()">
+    <div align="center">
+        <h1>Create New Pedagog</h1>
+        <br />
+        
+             <form th:action="@{/listolendetsipasDeges}" method="post" >
+             <label>deget</label>
+						<select class="px-5 py-1" th:name="dega" >
+						 	 
+	                        <option th:each="f:${listDege}"  th:value="${f.id}" th:text="${f.emri}"> </option>
+                        </select>
+                        <button type="submit" class="btn btn-outline-dark px-2 py-1"> Listo Lendet</button> 
+             </form>
+             <form th:action="@{/listolendetlist}" method="post" >
+             <label>Lendet</label>
+						<select class="px-5 py-1" th:name="lende" >
+						 	 
+	                        <option th:each="b: ${listLende}" th:value="${b.id}" th:text="${b.emri}"> </option>
+                        </select>
+                        <button type="submit" class="btn btn-outline-dark px-2 py-1"> Listo Lendet</button> 
+             </form>
+              <table>
+              	<tr th:each="lend : ${list1}">
+              		<td>Lenda:</td>
+	            	<td th:text="${lend.emri}">student ID</td>
+            	</tr>
+            	<tr th:each="lend : ${list2}">
+            		<td>Dega:</td>
+	            	<td th:text="${lend.emri}">student ID</td>
+            	</tr>
+              </table>
+        <form action="#" th:action="@{/savePedagog}" th:object="${pedagog}"
+            method="post">
+ 
+            <table border="0" cellpadding="10">
+                <tr>
+                    <td>FirstName:</td>
+                    <td><input type="text" th:field="*{firstname}" /></td>
+                </tr>
+                <tr>
+                    <td>LastName:</td>
+                    <td><input type="text" th:field="*{lastname}" /></td>
+                </tr>
+                
+                <tr>
+                    <td>E-mail:</td>
+                    <td><input type="text" th:field="*{email}" /></td>
+                </tr>
+                
+                <tr>
+                    <td>PassWord:</td>
+                    <td><input type="text" th:field="*{pass}" /></td>
+                </tr> 
+                  
+                
+               
+ 
+                
+            </table>
+            
+          
+             
+            <button type="submit">Save</button>
+        </form>
+    </div>
+</body>
+</html>

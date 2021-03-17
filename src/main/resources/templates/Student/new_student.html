@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<title>Create New Student</title>
+<script>
+function myFunction() {
+	var today = new Date();
+	var dd = String(today.getDate()).padStart(2, '0');
+	var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+	var yyyy = today.getFullYear();
+
+	today = yyyy + '-' + mm + '-' +dd ;
+	
+	document.getElementById("i1").setAttribute("max", today);
+	/* innerHTML = '<input type="date" max="'+today+'" th:field="*{dtRegjistrimi}" />';
+ */}
+</script>
+</head>
+<body onload="myFunction()">
+    <div align="center">
+        <h1>Create New Student</h1>
+        <br />
+        <form action="#" th:action="@{/save}" th:object="${student}"
+            method="post">
+ 
+            <table border="0" cellpadding="10">
+                <tr>
+                    <td>FirstName:</td>
+                    <td><input type="text" th:field="*{firstname}" /></td>
+                </tr>
+                <tr>
+                    <td>LastName:</td>
+                    <td><input type="text" th:field="*{lastname}" /></td>
+                </tr>
+                
+                <tr>
+                    <td>E-mail:</td>
+                    <td><input type="text" th:field="*{email}" /></td>
+                </tr>
+                
+                <tr>
+                    <td>PassWord:</td>
+                    <td><input type="text" th:field="*{pass}" /></td>
+                </tr> 
+                
+                
+                
+                <tr>
+                <td>Dega</td>
+                <td><select th:field="*{dega}">
+					    <option th:each="b: ${listDege}" th:value="${b.id}" th:text="${b.emri}" />
+					  </select>
+                </td>
+                </tr> 
+                
+                
+                
+                
+                
+                
+                
+                <tr>
+                    <td>Registration date:</td>
+                    <td><input id="i1" type="date"  th:field="*{dtRegjistrimi}" /></td>
+                    
+                </tr>                          
+                <tr>
+                    <td colspan="2"><button type="submit">Save</button> </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>

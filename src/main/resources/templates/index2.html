@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Fakulteti i Teknologjise se Informacionit.</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+
+    <link rel="stylesheet" href="fonts/ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="fonts/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <!-- Theme Style -->
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+  
+  <div  th:replace="layouts/header::header">
+  </div>
+    
+  <!--  <header  th:replace="layouts/header::header">
+     
+       <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+          <a class="navbar-brand absolute" href="/"><b>ABP</b> University</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse navbar-light" id="navbarsExample05">
+            <ul class="navbar-nav mx-auto">
+              <li class="nav-item">
+                <a class="nav-link active" href="/">Home</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="courses.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Faculties</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown04">
+                  <a class="dropdown-item" href="courses.html">HTML</a>
+                  <a class="dropdown-item" href="courses.html">WordPress</a>
+                  <a class="dropdown-item" href="courses.html">Laravel</a>
+                  <a class="dropdown-item" href="courses.html">JavaScript</a>
+                  <a class="dropdown-item" href="courses.html">Python</a>
+                </div>
+
+              </li>
+              
+                  
+
+               <li class="nav-item" sec:authorize="hasAuthority('STUDENT')">
+                <a class="nav-link" href="/Student/list_students">Student</a>
+              </li>
+               <li class="nav-item" >
+                <a class="nav-link" href=" student-form" >Student View</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/acc-form">Finance</a>
+<<<<<<< Updated upstream
+              </li> 
+              <li class="nav-item" sec:authorize="hasAuthority('ADMIN')">
+                <a class="nav-link" href="/Faculty/viewFaculty">Faculty</a>
+=======
+              </li> 
+              <li class="nav-item">
+                <a class="nav-link" href="#fakultet">Faculty</a>
+
+              </li>
+            <li class="nav-item" sec:authorize="hasAuthority('ADMIN')">
+                <a class="nav-link" href="/admin-form">Admin</a>
+              </li>  
+              <li class="nav-item">
+                <a class="nav-link" href="/about">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/contact">Contact</a>
+              </li>
+            </ul>
+            <ul class="navbar-nav absolute-right">
+              <li>
+                <a href="/login">Login</a> / <a href="/Student/register">Register</a>
+              </li>
+              
+            </ul>
+            
+          </div>
+        </div>
+      </nav> 
+    </header>
+    -->
+    <!-- END header -->
+
+    <section class="site-hero overlay" data-stellar-background-ratio="0.5" style="background-image: url(images/a1.jpeg);">
+      <div class="container">
+        <div class="row align-items-center justify-content-center site-hero-inner">
+          <div class="col-md-10">
+  
+            <div class="mb-5 element-animate">
+              <div class="block-17">
+                 
+                 <h2 class="heading text-center mb-4" >Miresevini ne <b>FTI</b><br> "Fakulteti i Teknologjise se Informacionit"</h2>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- END section -->
+
+    <section class="site-section element-animate">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-6 order-md-2">
+            <div class="block-16">
+              <figure>
+                <img src="images/tirana.jpg" alt="Image placeholder" class="img-fluid">
+                <a href="https://vimeo.com/45830194" class="play-button popup-vimeo"><span class="ion-ios-play"></span></a>
+
+                <!-- <a href="https://vimeo.com/45830194" class="button popup-vimeo" data-aos="fade-right" data-aos-delay="700"><span class="ion-ios-play"></span></a> -->
+
+              </figure>
+            </div>
+          </div>
+          <div class="col-md-6 order-md-1">
+
+            <div class="block-15">
+              <div class="heading">
+                <h2 style="font-size: 35px;">Miresevini ne <b>FTI</b> "Fakulteti i Teknologjise se Informacionit"</h2>
+              </div>
+              <div class="text mb-5">
+              <p>Misioni i FTI, si njësi kryesore e UPT, bazuar edhe në Statutin e Universitetit Politeknik të Tiranës, është të krijojë, të transmetojë, të zhvillojë e të mbrojë dijet me anën e mësimdhënies, kërkimit shkencor dhe shërbimeve si dhe të formojë specialistë të lartë dhe të përgatisë shkencëtarë të rinj të fushave të Teknologjisë së Informacionit: Telekomunikacion, Inxhinieri Informatike dhe Inxhinieri Elektronike bazuar në programe mësimore bashkëkohore, të kualifikuar dhe të përshtatshëm për tregun e punës në Shqipëri dhe në vende të tjera perëndimore; të ofrojë mundësi për të përfituar nga arsimi i lartë gjatë gjithë jetës; të ndihmojë zhvillimin ekonomik në nivel kombëtar dhe rajonal; të kontribuojë në rritjen e standardeve të demokracisë e të qytetërimit të shoqërisë dhe në përgatitjen e të rinjve për një shoqëri të tillë.</p>
+              </div>
+              <p><a href="#" class="btn btn-primary reverse py-2 px-4">Lexoni me Shume</a></p>
+              
+            </div>
+
+          </div>
+          
+        </div>
+
+      </div>
+    </section>
+    <!-- END section -->
+
+    <div  id="fakultet"class="site-section bg-light">
+      <div class="container">
+        <div class="row justify-content-center mb-5 element-animate">
+          <div class="col-md-7 text-center section-heading">
+            <h2 class="text-primary heading">Departamentet ne FTI</h2>
+            <p>"Nje investim ne dije kthen interesin me te madhe nga cdo investim tjeter"<br> –  Benjamin Franklin</p>
+            <p><a href="/Student/register" class="btn btn-primary py-2 px-4"><span class="ion-ios-book mr-2"></span>Regjistrohuni Tani</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid block-11 element-animate">
+        <div class="nonloop-block-11 owl-carousel">
+          <div class="item">
+            <div class="block-19">
+                <figure>
+                  <img src="images/elect.jpg" alt="Image" class="img-fluid">
+                </figure>
+                <div class="text">
+                  <h2 class="heading"><a href="/fshn">Departamenti Elektronikës dhe Telekomunikacionit </a></h2>
+                  <p class="mb-4">Departamenti i Elektronikës dhe Telekomunikacionit (DET), si njësi bazë e Fakultetit të Teknologjisë
+së Informacionit (FTI) në Universitetin Politeknik të Tiranës (UPT) synon përsosjen e formimit
+inxhinierik dhe shkencor në fushën e Elektronikës dhe Telekomunikacionit, për pregatitjen e
+specialistëve të lartë, të aftë për të projektuar, prodhuar dhe menaxhuar në fushat përkatëse si dhe
+në zgjidhjen e problemeve teknike sa më komplekse në vend dhe jashtë tij.</p>
+                  <div class="meta d-flex align-items-center">
+                    <div class="number">
+                      <!-- <span>2,219/6,000</span> -->
+                    </div>
+                    <!-- <div class="price text-right"><del class="mr-3">$23</del><span>Free</span></div> -->
+                  </div>
+                </div>
+              </div>
+          </div>
+
+          <div class="item">
+            <div class="block-19">
+                <figure>
+                  <img src="images/SW.jpg" alt="Image" class="img-fluid">
+                </figure>
+                <div class="text">
+                  <h2 class="heading"><a href="/law">Departamenti i Inxhinierisë Informatike</a></h2>
+                  <p class="mb-4">Eshtë vazhdimi i Seksionit të Inxhinierisë së Kompjuterave i Departamentit të Elektronikës. Departamenti ofron edukimin universitar dhe pas universitar, si dhe kërkim-zhvillim në fushat e inxhinierisë së softit, programimit të orientuar nga objekti,arkitekturës së kompjuterave, projektim i sistemeve shifrore, sistemet e shfrytëzimit, sistemet e shpërndare dhe grid, teknologjitë e rrjetave dhe bazave të të dhënave.</p>
+                  <div class="meta d-flex align-items-center">
+                    <div class="number">
+                      <!-- <span>2,219/6,000</span> -->
+                    </div>
+                    <!-- <div class="price text-right"><del class="mr-3">$23</del><span>Free</span></div> -->
+                  </div>
+                </div>
+              </div>
+          </div>
+
+          <div class="item">
+            <div class="block-19">
+              <figure>
+                <img src="images/bd.jpg" alt="Image" class="img-fluid">
+              </figure>
+              <div class="text">
+                <h2 class="heading"><a href="/economy">Departamenti i Bazave të Informatikës</a></h2>
+                <p class="mb-4">Departamenti i Bazave të Informatikës (DBI) u krijua në Mars të vitit 2016, për të mbështetur dhe fuqizuar Qendrën për Kërkim dhe Zhvillim (QKZH) dhe procesin mësimor në nivel universiteti.Veprimtaria kërkimore dhe shkencore e departamentit fokusohet mbi sistemet e shpërndara,  optimizimin dhe zhvillimin e aplikacioneve përkatëse, virtualizimin dhe sigurinë e sistemeve, ndërtimin e Grid-it mbi rrjetat kompjuterike, teknologjitë dhe shërbimet e Internetit si Cloud Computing, shfrytëzimin e  bazave të të dhënave dhe ndërtimin e aplikacioneve web.</p>
+                <div class="meta d-flex align-items-center">
+                  <div class="number">
+                    <!-- <span>1,903/3,000</span> -->
+                  </div>
+                 <!--  <div class="price text-right"><span>$10.99</span></div> -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+        
+
+      
+    </div>
+    <!-- END section -->
+
+ 
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md-6 col-lg-3 mb-5 mb-lg-0">
+            <h3>Behu pjese e FTI</h3>
+            <p>Regjustohuni prane nesh per te ndjekur nje nder profilet e te ardhmes</p>
+          </div>
+          <div class="col-md-6 col-lg-3 mb-5 mb-lg-0">
+            <h3 class="heading">Like te shpjeta</h3>
+            <div class="row">
+              <div class="col-md-6">
+                <ul class="list-unstyled">
+                  <li><a href="#">Hyrje</a></li>
+                  <li><a href="#">Rreth nesh</a></li>
+                  <li><a href="#">Deget</a></li>
+                  <li><a href="#">Nivelet e studimit</a></li>
+                </ul>
+              </div>
+              <div class="col-md-6">
+                <ul class="list-unstyled">
+                  <li><a href="#">Njoftimet</a></li>
+                  <li><a href="#">Suporti</a></li>
+                  <li><a href="#">Kontakte</a></li>
+                  <li><a href="#">Studentet</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+           <div class="col-md-6 col-lg-3 mb-5 mb-lg-0">
+            <h3>Godina e FTI</h3>
+            <p>Ju nevoiten me shume informacione? Na vizitoni ne zyrat tone ne Tirane!</p>
+          </div>
+          
+          <div class="col-md-6 col-lg-3 mb-5 mb-lg-0">
+            <h3 class="heading">Informacione te kontaktit</h3>
+            <div class="block-23">
+              <ul>
+                <li><span class="icon ion-android-pin"></span><span class="text">Fakulteti i Teknologjisë së Informacionit
+Universiteti Politeknik i Tiranës
+Sheshi “Nënë Tereza”, Nr. 4, Tiranë</span></li>
+                <li><a href="#"><span class="icon ion-ios-telephone"></span><span class="text"> +355 4 227 8159</span></a></li>
+                <li><a href="#"><span class="fa fa-globe"></span><span class="text">&nbsp;&nbsp; e-mail: info@abp.al</span></a></li>
+                <li><span class="icon ion-android-time"></span><span class="text">E Hene &mdash;E Premte 8:00am - 5:00pm</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="row pt-5">
+          <div class="col-md-12 text-center copyright">
+            
+            <p class="float-md-left"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy; October <script>document.write(new Date().getFullYear());</script> All rights reserved | This project is made by Anisa Hajrullaj, FTI, UPT. </p>
+            <p class="float-md-right">
+              <a href="#" class="fa fa-facebook p-2"></a>
+              <a href="#" class="fa fa-twitter p-2"></a>
+              <a href="#" class="fa fa-linkedin p-2"></a>
+              <a href="#" class="fa fa-instagram p-2"></a>
+
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- END footer -->
+    
+    <!-- loader -->
+    <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#f4b214"/></svg></div>
+
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/jquery-migrate-3.0.0.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.waypoints.min.js"></script>
+    <script src="js/jquery.stellar.min.js"></script>
+    <script src="js/jquery.animateNumber.min.js"></script>
+    
+    <script src="js/jquery.magnific-popup.min.js"></script>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>

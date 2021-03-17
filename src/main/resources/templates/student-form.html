@@ -1,0 +1,590 @@
+<! DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Student form</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500" rel="stylesheet">
+
+<link rel="stylesheet" href="../css/style2.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/animate.css">
+    <link rel="stylesheet" href="../css/owl.carousel.min.css">
+
+    <link rel="stylesheet" href="../fonts/ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="../fonts/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="../css/magnific-popup.css">
+
+    <!-- Theme Style -->
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <style>
+    table { width:250px;table-layout:fixed; }
+	 
+	td { overflow:hidden;white-space:nowrap;  } 
+    </style>
+    <script>
+function myFunction() {
+	var today = new Date();
+	var dd = String(today.getDate()).padStart(2, '0');
+	var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+	var yyyy = today.getFullYear();
+
+	today = yyyy + '-' + mm + '-' +dd ;
+	
+	document.getElementById("idtMSG").value= today;
+	/* innerHTML = '<input type="date" max="'+today+'" th:field="*{dtRegjistrimi}" />';
+ */}
+</script>
+  </head>
+<body onload="myFunction()">
+
+ <div  th:replace="layouts/header::header">
+  </div>
+<!-- <header role="banner">
+     
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+          <a class="navbar-brand absolute" href="/"><b>ABP</b> University<a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse navbar-light" id="navbarsExample05">
+            <ul class="navbar-nav mx-auto">
+              <li class="nav-item">
+                <a class="nav-link active" href="/">Home</a>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="courses.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Faculties</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown04">
+                  <a class="dropdown-item" href="courses.html">HTML</a>
+                  <a class="dropdown-item" href="courses.html">WordPress</a>
+                  <a class="dropdown-item" href="courses.html">Laravel</a>
+                  <a class="dropdown-item" href="courses.html">JavaScript</a>
+                  <a class="dropdown-item" href="courses.html">Python</a>
+                </div>
+
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="/Student/list_students">Student</a>
+              </li>
+               <li class="nav-item">
+                <a class="nav-link" href="/student-form">Student View</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/acc-form">Finance</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/#fakultet">Faculty</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/admin-form">Admin</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/about">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/contact">Contact</a>
+              </li>
+            </ul>
+            <ul class="navbar-nav absolute-right">
+              <form th:action="@{/app-logout}" method="POST" id="demo1">
+	                 <ul class="navbar-nav absolute-right">
+			              <li>
+					         <a href="#" onclick="document.getElementById('demo1').submit();">Logout</a>/
+					          <a href="/Student/register">Register</a>
+					      </li>
+              
+                    </ul>
+			    </form>
+	     
+              
+            </ul>
+            
+          </div>
+        </div>
+      </nav>
+    </header> -->
+	<div class="sidebar-container" style="display: block;" >
+		<div class="sidebar-logo">Student</div>
+		<ul class="sidebar-navigation">
+			<li class="header">Lista e lendeve</li>
+			
+			<li><a href="/student-form/addCourseList"> <i
+					class="fa fa-list-ul" aria-hidden="true"></i> Lista e lendeve
+			</a></li>
+			<li class="header">My details</li>
+			<li><a href="/student-form/addStudentList"> <i
+					class="fa fa-user-circle" aria-hidden="true"></i> Te dhenat e mia
+			</a></li>
+			
+			<li class="header">Kerkesat</li>
+			<li><a href="/student-form/addKerkesaList"> <i
+					class="fa fa-list-ul" aria-hidden="true"></i> Lista e kerkesave
+			</a></li>
+			
+			<li><a href="/student-form/addNewKerkesa"> <i
+					class="fa fa-plus-square-o" aria-hidden="true"></i>Kerkese e re
+			</a></li>
+			<li><a href="/student-form/KerkesaMarra"> <i
+					class="fa fa-list-ul" aria-hidden="true"></i>Dokumentat
+			</a></li>
+			<li class="header">Mesazhet</li>
+			<li><a href="/student-form/addMesazh"> <i
+					class="fa fa-plus-square-o" aria-hidden="true"></i> Krijo Mesazh
+			</a></li>
+			<li><a href="/student-form/addMesazhDerg"> <i
+					class="fa fa-paper-plane-o" aria-hidden="true"></i> Sent Message
+			</a></li>
+			<li><a href="/student-form/addMesazhMarr"> <i
+					class="fa fa-inbox" aria-hidden="true"></i> Received Message
+			</a></li>
+			 
+		</ul>
+	</div><!-- background-color:rgb(75,75,75); 104......background-image: url(/images/min2.jpg);background-repeat:100% 17%; background-position: 73% 25%;background-size: cover; opacity: 0.4; filter: alpha(opacity=40); -->
+
+	<div class="content-container" style="height:150%;background-color:rgb(75,75,75);">
+
+		<div class="container-fluid" style="width: 98%; margin-top:-20px;height:99%;">
+
+			<!-- Main component for a primary marketing message or call to action -->
+			<!-- <div class="jumbotron">
+				<h1>Navbar example</h1>
+				<p>My account</p> -->
+
+				<!-- 	SHOW  STUDENTS -->
+				
+				<div  class="form-wrap1" style=" height:500px;overflow: auto;"align="center" th:if="${Fillimi} == 1">Miresevini ne nderfaqen per studentet</div>
+				<div  class="form-wrap1" style=" height:500px;overflow: auto;"align="center"th:if="${showMyStudentList} == 1">
+
+					<h1>Te dhenat</h1>
+
+					<br />
+					<table border="1" class="table table-striped">
+						<thead class="thead-dark">
+							<tr>
+
+								<th>ID</th>
+								<th>Emri</th>
+								<th>Mbiemri</th>
+								<th>E-mail</th> 
+								<th>Password</th> 
+								<th>Dega</th> 
+								<th>Veprimet</th> 
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="student: ${listStudents}">
+
+
+								<td th:text="${student.id}"></td>
+								<td th:text="${student.firstname}"></td>
+								<td th:text="${student.lastname}"></td>
+								<td th:text="${student.email}"></td> 
+								<td th:text="${student.pass}"></td> 
+								<td th:text="${student.dega.emri}"></td> 
+								 
+								<td><a th:href="@{'/Student/edit/' + ${student.id}}">Edit</a></td>
+								<!-- <td>                 
+                  <a th:href="@{'/deletestudent/' + ${student.id}}">Delete</a>    
+                  <a th:href="@{'/editstudent/' + ${student.id}}">Edit</a>          
+                </td> -->
+
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+				<!-- END	SHOW  STUDENTS -->
+
+			
+			 
+			
+			<div class="form-wrap1" th:if="${showNewKerkes} == 1">
+					<h1 align="center"> Formo nje kerkese te re </h1> 
+					<form action="#" th:action="@{/saveKerkesa}" th:object="${kerkesa}" method="post">
+				<div th:object="${student}" >
+				
+            		<div class="row">
+							<div class="col-md-12 form-group">
+								<label for="name">ID:</label> <input type="text"
+									th:field="*{id}" id="name" class="form-control py-2">
+							</div>
+					</div>
+            		
+            		<div class="row">
+							<div class="col-md-12 form-group">
+								<label for="name">FirstName:</label> <input type="text"
+									th:field="*{firstname}" id="name" class="form-control py-2">
+							</div>
+					</div>
+            	 
+                	<div class="row">
+							<div class="col-md-12 form-group">
+								<label for="name">LastName:</label> <input type="text"
+									th:field="*{lastname}" id="name" class="form-control py-2">
+							</div>
+					</div>
+                
+                	<div class="row">
+							<div class="col-md-12 form-group">
+								<label for="name">E-mail:</label> <input type="text"
+									th:field="*{email}"  id="name" class="form-control py-2">
+							</div>
+					</div>
+					
+					<div class="row">
+							<div class="col-md-12 form-group">
+								<label for="name">Dega</label> <input type="text"
+									th:field="*{dega.emri}"  id="name" class="form-control py-2">
+							</div>
+					</div>
+                
+                  
+	            </div> 
+	            <div>
+	              <input type="hidden"  th:field="*{derguar}"th:value="${'false'}" /> 
+	            
+	            <table class=" table table-hover ">
+				 	
+				 	<tr>
+                     <td>kategori:</td> 
+                    
+                    <td><select class="browser-default custom-select" th:field="*{kategori}">
+            				<option th:each="p : ${listkategori}" th:value="${p}" th:text="${p}" />
+        				</select>
+        			</td>
+        			</tr>
+                	 
+                 
+            </table>
+            </div>
+            <button type="submit" class="btn btn-primary px-5 py-2">Save</button>
+										 
+				</form>
+			</div>
+	 
+			
+			
+			
+			
+			
+			
+			
+			
+		
+ <div class="form-wrap1" th:if="${showNewmesazh} == 1">
+		 <h1 align="center"> Dergoni nje mesazh </h1> 
+		  
+		 <div id="center" class="col-md-8 pr-md-5">
+		 <form action="#" th:action="@{/saveMesazh}" th:object="${mesazh}" method="post">
+				<div th:object="${student}" >
+					 <div class="form-group row">
+    					<label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+    					<div class="col-sm-10">
+      						<input type="text" readonly class="form-control-plaintext" th:field="*{email}" id="staticEmail" value="*{email}">
+   						 </div>
+  					</div>
+	            </div>
+	            <div class="form-group row">
+   					 <label for="inputPassword" class="col-sm-2 col-form-label">Email i marresit</label>
+    				<div class="col-sm-10">
+      					<input type="text" th:field="*{emailM}" class="form-control"   >
+    				</div>
+ 				 </div>
+	            <div class="form-group row">
+   					<label for="inputPassword" class="col-sm-2 col-form-label">Titulli</label>
+    				<div class="col-sm-10">
+      					<input type="text" class="form-control"   th:field="*{title}" >
+    				</div>
+  				</div> 
+  				<div class="row">
+					<div class="col-md-12 form-group">
+                      <label for="message">Write Message</label>
+                      <textarea name="message" th:field="*{subject}" id="message" class="form-control py-2" cols="30" rows="8"></textarea>
+                    </div>
+                </div>
+                <input id="idtMSG" type="hidden"  th:field="*{dtDerg}" />
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                       <button type="submit" class="btn btn-primary ">Send Message</button>
+                    </div>
+                  </div>
+           
+										 
+		</form>	 
+		</div> 
+ </div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			<div  class="form-wrap1" style=" height:500px;overflow: auto;"align="center"th:if="${showDokumenta} == 1">
+ 				<h1>Dokumenta Sekretarie</h1>
+				<br/>
+					<table class=" table table-hover ">
+				 	
+					 	<tr th:each="item : ${listKerkesash}">
+	                     <td>kategori:</td> 
+		                 <td><span th:text="${item.kategori }"> Title </span></td>
+	        			</tr>
+                	 
+                 
+            		</table>
+					<table border="1" class="table table-striped">
+						<thead class="thead-dark">
+							<tr>
+
+								<th>ID </th>
+								<th>Emri</th>
+           						<th>Download Link</th>
+								
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="doc:${docs}">
+							   <td th:text="${doc.Id}" />
+					           <td th:text="${doc.docName}"/>
+					           <td><a th:href="@{'/downloadFile/'+${doc.id}}">Download</a></td>
+					         </tr>
+						</tbody>
+					 </table>
+					 
+			 </div>
+			
+			
+			
+			
+			
+			
+			
+			<div  class="form-wrap1" style=" height:500px;overflow: auto;"align="center"th:if="${showMesDerg} == 1">
+
+					<h1>Mesazhe te derguara</h1>
+
+					<br />
+					
+					<table border="1" class="table table-striped">
+				        <thead class="thead-dark">
+				            <tr>
+				             
+				                <th>Email Derguesi</th>
+				                <th>Email Marresi</th>
+				                <th>Titulli</th>
+				                <th>Permbajtja</th>
+				                <th>Data e dergimit</th>
+				                <th>Veprimet</th>
+				                
+				                
+				            </tr>
+				        </thead>
+				        <tbody style="overflow: hidden;">
+				            <tr th:each="Mesazh : ${listMesazhe}">
+				            
+				            	 
+				        		<td th:text="${Mesazh.email}">firstName</td>  
+				                <td th:text="${Mesazh.emailM}">lastname</td>
+				                <td  th:text="${Mesazh.title}">pass</td>
+				                <td th:text="${Mesazh.subject}">pass</td>
+				                <td th:text="${Mesazh.dtDerg}">lastname</td>
+				              	<td><a th:href="@{'/Student/view/' + ${Mesazh.id}}">Shfaq</a></td>
+				            </tr>
+				        </tbody>
+   				 </table>
+				</div>
+			
+			
+			<div  class="form-wrap1" style=" height:500px;overflow: auto;"align="center"th:if="${showMesMarr} == 1">
+
+					<h1>Mesazhe te Marra</h1>
+
+					<br />
+					
+					<table border="1" class="table table-striped">
+				        <thead class="thead-dark">
+				            <tr>
+				            	 
+				                <th>Email Derguesi</th>
+				                <th>Email Marresi</th>
+				                <th>Titulli</th>
+				                <th>Permbajtja</th>
+				                <th>Data e dergimit</th>
+				                <th>Veprimet</th>
+				                
+				                
+				            </tr>
+				        </thead>
+				        <tbody style="overflow: hidden;">
+				            <tr th:each="Mesazh : ${listMesazhe}">
+				            
+				            	 
+				        		<td th:text="${Mesazh.email}">firstName</td>  
+				                <td th:text="${Mesazh.emailM}">lastname</td>
+				                <td th:text="${Mesazh.title}">pass</td>
+				                <td  th:text="${Mesazh.subject}">pass</td>
+				                <td th:text="${Mesazh.dtDerg}">lastname</td>
+				                <td><a th:href="@{'/Student/viewM/' + ${Mesazh.id}}">Shfaq</a></td>
+				            </tr>
+				        </tbody>
+   				 </table>
+				</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+					<div  class="form-wrap1" style=" height:500px;overflow: auto;"align="center"th:if="${showKerkesaList1} == 1">
+
+					<h1>Lista e kerkesave te derguara</h1>
+
+					<br />
+					<table border="1" class="table table-striped">
+						<thead class="thead-dark">
+							<tr>
+
+								<th>ID</th>
+								<th>Emri</th>
+								<th>Mbiemri</th>
+								
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="student: ${listStudents}">
+
+
+								<td th:text="${student.id}"></td>
+								<td th:text="${student.firstname}"></td>
+								<td th:text="${student.lastname}"></td>
+								 
+								
+								<!-- <td>                 
+                  <a th:href="@{'/deletestudent/' + ${student.id}}">Delete</a>    
+                  <a th:href="@{'/editstudent/' + ${student.id}}">Edit</a>          
+                </td> -->
+
+							
+						</tbody>
+						
+					</table>
+					<br>
+					<table border="1" class="table table-striped">
+						<thead class="thead-dark">
+							<tr><th>Emertimi i kerkeses</th></tr></thead>
+							<tbody> <tr th:each="item : ${listKerkesash}">
+                				<td><span th:text="${item.kategori }"> Title </span></td>
+                			</tr></tbody></table>
+				</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+
+			<!-- 			SHOW  COURSE -->
+
+							<div  class="form-wrap1" style=" height:500px;overflow: auto;"align="center" th:if="${showMyCourseList} == 1">
+
+								<h1>Lista e lendeve</h1>
+
+								<br />
+							
+                        <br><br><br>
+								<table border="1" class="table table-striped">
+									<thead class="thead-dark">
+										<tr>
+											<th>ID</th>
+											<th>Name</th>
+											<th>Credits</th>
+											<th>Nota</th>
+											
+
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="course: ${listLenda}">
+											<td th:text="${course.lenda.id}">ID</td>
+											<td th:text="${course.lenda.emri}">Name</td>
+											
+											<td th:text="${course.lenda.kredite}">Price</td>
+											<td th:text="${course.nota}">Name</td>
+											<!-- <td th:text="${course.lenda.dega.emri}">Branch</td> -->
+											<!-- 	<td><a th:href="@{'/deletecourse/' + ${course.id}}">Delete</a> -->
+											<!-- <a th:href="@{'/editcourse/' + ${course.id}}">Edit</a></td> -->
+											<!-- <td><input type="checkbox" name="ids"th:value="${course.id}"/></td> -->
+											<!-- <td th:if="${course.status}==false"><i class="fa fa-times-circle-o" aria-hidden="true"></i></td> -->
+										</tr>
+									</tbody>
+								</table>
+		<!-- 								
+		<form action="#" th:action="@{/save}"  th:object="${student}" 
+            method="post">
+ 
+            <table>
+               
+                <tr>
+                    <td>Student first name:</td>            
+                    <td><input type="text" th:field="*{firstname}" /></td>
+                </tr>
+                <tr>
+                    <td>Student last name:</td>            
+                    <td><input type="text" th:field="*{lastname}" /></td>
+                </tr>
+                <tr>
+                    <td>Student email:</td>            
+                    <td><input type="text" th:field="*{email}" /></td>
+                </tr>
+                <tr>
+                    <td>Student address:</td>            
+                    <td><input type="text" th:field="*{addres}" /></td>
+                </tr>
+                
+                 
+                </table>
+                	<br/>
+                    <button type="submit">Save</button> 
+                
+            
+            
+        </form>  -->
+							</div>
+
+			<!-- 			END	SHOW  COURSE -->
+		
+		</div>
+
+	</div>
+<!-- (</div>) -->
+</body>
+</html>

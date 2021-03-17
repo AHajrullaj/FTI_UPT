@@ -1,0 +1,81 @@
+<! DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Vendos Noten</title>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500"
+	rel="stylesheet">
+
+<link rel="stylesheet" href="../css/style2.css">
+<link rel="stylesheet" href="../css/bootstrap.css">
+<link rel="stylesheet" href="../css/animate.css">
+<link rel="stylesheet" href="../css/owl.carousel.min.css">
+
+<link rel="stylesheet" href="../fonts/ionicons/css/ionicons.min.css">
+<link rel="stylesheet"
+	href="../fonts/fontawesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="../fonts/flaticon/font/flaticon.css">
+<link rel="stylesheet" href="../css/magnific-popup.css">
+
+<!-- Theme Style -->
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+	<div th:replace="layouts/header::header"></div>
+	<div class="form-wrap1" align="center" style="height: auto;">
+
+		<h1>Vendos noten</h1>
+		<br />
+		<form action="#" th:action="@{/savePayment}" th:object="${courses}"
+			method="post">
+
+
+			<table border="1" class="table table-striped">
+				<thead class="thead-dark">
+					<tr>
+						<th>Emri i Studentit</th>
+						<th>Mbiemri i Studentit</th>
+						<th>Emri i lendes</th>
+						<th>Nota</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="c : ${courses}">
+						<input type="hidden" th:value="${student.id}" name="studentId">
+						<td th:text="${c.student.firstname}">branch ID</td>
+						<td th:text="${c.student.lastname}">branch ID</td>
+						<td th:text="${c.lenda.emri}">branch ID</td>
+						<td><input type="text" name="nota" th:value="${c.nota}" /></td>
+					</tr>
+
+				</tbody>
+
+			</table>
+			<button type="submit" class="btn btn-outline-dark px-2 py-1">Save</button>
+			<!-- <table border="1" >
+                    
+                <th:block th:each="c : ${courses}">
+                <input type="hidden"  th:value="${student.id}" name="studentId">
+                
+	                <input type="checkbox" name="ids" th:value="${c.course.id}"/>
+<<<<<<< Updated upstream
+	                 <label th:text="${c.course.name}"></label>
+	                  
+=======
+	                 <label th:text="${c.course.name}"></label><br>
+>>>>>>> Stashed changes
+               </th:block>
+                                     
+                <tr>
+                    <td colspan="2"><button type="submit">Save</button> </td>
+                </tr>
+            </table> -->
+		</form>
+	</div>
+
+</body>
+</html>

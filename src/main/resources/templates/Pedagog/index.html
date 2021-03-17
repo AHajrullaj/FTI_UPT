@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>Pedagog Manager</title>
+
+</head>
+
+<body>
+<div align="center">
+    <h1>Pedagog List</h1>
+    <a href="/Pedagog/new">Create New Pedagog</a>
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+            <tr>
+            	<th>Pedagog id</th>
+                <th>firstname</th>
+                <th>lastname</th>
+                <th>email</th>
+                <th>password</th>
+                 
+                <th>actions</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="pedagog : ${listPedagog}">
+            
+            	<td th:text="${pedagog.id}">student ID</td>
+                <td th:text="${pedagog.firstname}">firstName</td>
+                <td th:text="${pedagog.lastname}">lastname</td>
+                <td th:text="${pedagog.email}">lastname</td>
+                <td th:text="${pedagog.pass}">pass</td>
+               
+                <td>
+                    <a th:href="@{'/Pedagog/edit/' + ${pedagog.id}}">Edit</a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a th:href="@{'/Pedagog/shtolend/' + ${pedagog.id}}">shto lende</a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a th:href="@{'/Pedagog/delete/' + ${pedagog.id}}">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>   
+</body>
+</html>

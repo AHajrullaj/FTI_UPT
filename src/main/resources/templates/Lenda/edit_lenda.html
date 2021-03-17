@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<title>Edit Lenda</title>
+</head>
+<body >
+    <div align="center">
+        <h1>Edit Lenden</h1>
+        <br />
+        <form action="#" th:action="@{/saveLenda}" th:object="${lenda}"
+            method="post">
+ 
+            <table border="0" cellpadding="10">
+                <tr>             
+                    <td>ID Lende:</td>
+                    <td>
+                        <input type="text" th:field="*{id}" readonly="readonly" />
+                    </td>
+                </tr>        
+                <tr>             
+                    <td>emri:</td>
+                    <td>
+                        <input type="text" th:field="*{emri}" />
+                    </td>
+                </tr>
+                <tr>             
+                    <td>Kredite:</td>
+                    <td>
+                        <input type="text" th:field="*{kredite}" />
+                    </td>
+                </tr>
+                
+                 <tr>             
+                    <td>simestri:</td>
+                    <td>
+                        <input type="text" th:field="*{simestri}" />
+                    </td>
+                </tr>
+                
+                
+                <tr>
+                <td>Dega</td>
+                <td><select th:field="*{dega}">
+					    <option th:each="b: ${listDege}" th:value="${b.id}" th:text="${b.emri}" />
+					  </select>
+                </td>
+                </tr>      
+                <tr>
+                    <td colspan="2"><button type="submit">Save</button> </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>

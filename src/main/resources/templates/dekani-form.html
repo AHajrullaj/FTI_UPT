@@ -1,0 +1,668 @@
+<! DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Dekani form</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500" rel="stylesheet">
+
+<link rel="stylesheet" href="../css/style2.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/animate.css">
+    <link rel="stylesheet" href="../css/owl.carousel.min.css">
+
+    <link rel="stylesheet" href="../fonts/ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="../fonts/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="../css/magnific-popup.css">
+
+    <!-- Theme Style -->
+    <link rel="stylesheet" href="../css/style.css">
+     
+    
+    <!--   <style>
+    #Table1 #Table2 { width:250px;table-layout:fixed; }
+	 
+	.Table1TD { overflow:hidden;white-space:nowrap;  } 
+    </style>  -->
+         <script>
+function myFunction() {
+	var today = new Date();
+	var dd = String(today.getDate()).padStart(2, '0');
+	var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+	var yyyy = today.getFullYear();
+
+	today = yyyy + '-' + mm + '-' +dd ;
+	
+	document.getElementById("newStudent").value= today;
+	/* innerHTML = '<input type="date" max="'+today+'" th:field="*{dtRegjistrimi}" />';
+ */}
+</script>
+  </head>
+<body onload="myFunction()">
+
+ <div  th:replace="layouts/header::header"> </div>
+ 
+	<div class="sidebar-container" style="display: block;" >
+		<div class="sidebar-logo">Dekani</div>
+		<ul class="sidebar-navigation">
+			 
+			<li class="header">My details</li>
+			<li><a href="/dekani-form/showData"> <i
+					class="fa fa-user-circle" aria-hidden="true"></i> Te dhenat e mia
+			</a></li>
+			<li class="header">Studentet</li>
+			<li><a href="/dekani-form/listoStudenteNeBazTedegesDheLendeveQeJEp"> <i
+					class="fa fa-list-ul" aria-hidden="true"></i> Listo Studentet
+			</a></li>
+			<li class="header">Dega</li>
+			<li><a href="/dekani-form/newDega"> <i
+					class="fa fa-plus-square-o" aria-hidden="true"></i> Krijo nje dege
+			</a></li>
+			<li><a href="/dekani-form/ListaEDegeve"> <i
+					class="fa fa-list-ul" aria-hidden="true"></i> Listo Deget
+			</a></li>
+			<li class="header">Lenda</li>
+			<li><a href="/dekani-form/newLenda"> <i
+					class="fa fa-plus-square-o" aria-hidden="true"></i> Krijo nje Lende
+			</a></li>
+			<li><a href="/dekani-form/ListaElendevedekani"> <i
+					class="fa fa-list-ul" aria-hidden="true"></i> Listo Lendet
+			</a></li>
+			<li class="header">Pedagog</li>
+			<li><a href="/Pedagog/new"> <i
+					class="fa fa-plus-square-o" aria-hidden="true"></i>Krijo Pedagog
+			</a></li>
+			<li><a href="/dekani-form/ListaPedagogeve"> <i
+					class="fa fa-list-ul" aria-hidden="true"></i>Listo Pedagog
+			</a></li>
+			<li class="header">Sekretari</li>
+			<li><a href="/Sekretari/new"> <i
+					class="fa fa-plus-square-o" aria-hidden="true"></i>Krijo Sekretare
+			</a></li>
+			<li><a href="/Sekretari/index"> <i
+					class="fa fa-list-ul" aria-hidden="true"></i>Listo Sekretare
+			</a></li>
+			<li class="header">Mesazhe</li>
+			<li><a href="/dekani-form/addMesazh"> <i
+					class="fa fa-plus-square-o" aria-hidden="true"></i> Krijo
+			</a></li>
+			<li><a href="/dekani-form/addMesazhDerg"> <i
+					class="fa fa-paper-plane-o" aria-hidden="true"></i> Te derguara
+			</a></li>
+			<li><a href="/dekani-form/addMesazhMarr"> <i
+					class="fa fa-inbox" aria-hidden="true"></i> Te Marra
+			</a></li>
+			
+			
+			
+			
+		</ul>
+	</div><!-- background-color:rgb(75,75,75); 104......background-image: url(/images/min2.jpg);background-repeat:100% 17%; background-position: 73% 25%;background-size: cover; opacity: 0.4; filter: alpha(opacity=40); -->
+
+	<div class="content-container" style="height:150%;background-color:rgb(75,75,75);">
+
+		<div class="container-fluid" style="width: 98%; margin-top:-20px;height:99%;">
+
+			 
+
+<!-- 	SHOW  DEKANI VIEW -->
+				
+				<div  class="form-wrap1" style=" height:500px;overflow: auto;"align="center" th:if="${Fillimi} == 1">Miresevini ne nderfaqen per Dekanin</div>
+				
+<!-- my data -->				
+				<div  class="form-wrap1" style=" height:500px;overflow: auto;"align="center"th:if="${showDekani} == 1">
+
+					<h1>Te dhenat</h1>
+
+					<br />
+					<table border="1" class="table table-striped">
+						<thead class="thead-dark">
+							<tr>
+
+								<th>ID</th>
+								<th>Emri</th>
+								<th>Mbiemri</th>
+								<th>E-mail</th> 
+								<th>Password</th> 
+							 
+								<th>Veprimet</th> 
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="s: ${dekani}">
+
+
+								<td th:text="${s.id}"></td>
+								<td th:text="${s.firstname}"></td>
+								<td th:text="${s.lastname}"></td>
+								<td th:text="${s.email}"></td> 
+								<td th:text="${s.pass}"></td> 
+							 
+								 
+								<td><a th:href="@{'/Dekani/edit/' + ${s.id}}">Edit</a></td>
+								<!-- <td>                 
+                  <a th:href="@{'/deletestudent/' + ${student.id}}">Delete</a>    
+                  <a th:href="@{'/editstudent/' + ${student.id}}">Edit</a>          
+                </td> -->
+
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				
+<!-- LISTO 		STUDENTE -->
+			<div class="row justify-content-center">
+				<div class="col-md-10">
+					<div class="form-wrap1" style="height: auto;"
+						th:if="${showStudent} == 1">
+
+						<h1 align="center">Listo Studentet </h1>
+						<br> <br>
+
+						<form th:action="@{/dekani-form/listolendetsipasDegesP}" method="post">
+							<div class="row">
+								<div class="col-md-12 form-group">
+									<label>Dega </label> <select class="form-control py-2"
+										th:name="dega">
+										<option th:each="f:${listdege}" th:value="${f.id}"
+											th:text="${f.emri}"></option>
+									</select>
+									<button type="submit" class="btn btn-outline-dark px-2 py-1">
+										Listo Deget</button>
+								</div>
+							</div>
+						</form>
+
+						<form th:action="@{/dekani-form/listolendetlistP}" method="post">
+							<div class="row">
+								<div class="col-md-12 form-group">
+									<label>Lendet</label> <select class="form-control py-2"
+										th:name="lende">
+										<option th:each="b: ${listL}" th:value="${b.id}"
+											th:text="${b.emri}"></option>
+									</select>
+									<button type="submit" class="btn btn-outline-dark px-2 py-1">
+										Listo Lendet</button>
+								</div>
+							</div>
+							<table>
+								<tr th:each="lend : ${list1}">
+									<td>Lenda:</td>
+									<td th:text="${lend.emri}">student ID</td>
+								</tr>
+								<tr th:each="lend : ${list2}">
+									<td>Dega:</td>
+									<td th:text="${lend.emri}">student ID</td>
+								</tr>
+							</table>
+						</form>
+
+						<table border="1" class="table table-striped">
+							<thead class="thead-dark">
+								<tr>
+									<th>ID</th>
+									<th>Emri</th>
+									<th>Mbiemri</th>
+									<th>Email</th>
+									<th>Veprimet</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="p: ${listS}">
+									<td th:text="${p.id}">branch ID</td>
+									<td th:text="${p.firstname}">Branch Name</td>
+									<td th:text="${p.lastname}">Faculty</td>
+									<td th:text="${p.email}">Faculty</td>
+									 <td><a th:href="@{'/dekani-form/studentPayment/' + ${p.id}}">Vendos noten</a>
+										<!--&nbsp;&nbsp;&nbsp; <a
+										th:href="@{'/Pedagog/shtolend/' + ${p.id}}">shto lende</a></td>
+								</tr> -->
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<!-- FUND -->	
+				
+<!-- New Dege-->	
+ 		<div class="row justify-content-center">
+          <div class="col-md-10">			
+ 			 <div class="form-wrap1"  style="height:auto;" th:if="${showCreateNewDega} == 1">
+
+					<h1 align="center">Krijo nje Dege</h1>
+						<br> <br>
+					<form action="#" th:action="@{/saveDege}" th:object="${dega}" method="post">
+						  
+						<div class="row">
+							<div class="col-md-12 form-group">
+								<label >Emri:</label>
+							    <input type="text" th:field="*{emri}" class="form-control py-2">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12 form-group">
+								<label >Vite Studimi:</label>
+							    <input type="text" th:field="*{viteStudimi}" class="form-control py-2">
+							</div>
+						</div>
+						 
+						<button type="submit" class="btn btn-primary px-5 py-2">Save</button>
+					</form>
+ 				</div>	
+ 			</div>
+ 		</div>
+ <!-- List Deget-->	 
+	 <div  class="form-wrap1" style=" height:500px;overflow: auto;"align="center"th:if="${showDegetlist} == 1">
+
+					<h1>List e Degeve</h1>
+
+					<br />
+					<table border="1" class="table table-striped">
+						<thead class="thead-dark">
+							<tr>
+
+								<th>Dega Id</th>
+				                <th>Emri</th>
+				                <th>Vite studimi</th> 
+				                <th>Veprimet</th> 
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="dega : ${listDeget}">
+								<td th:text="${dega.id}">student ID</td>
+				                <td th:text="${dega.emri}">firstName</td>
+				                <td th:text="${dega.viteStudimi}">lastname</td>
+				                  
+               					<td><a th:href="@{'/Dega/edit/' + ${dega.id}}">Edit</a></td>
+ 					
+							</tr>
+						</tbody>
+					</table>
+	</div>
+
+<!-- list lende -->
+			 	 <div class="form-wrap1" align="center" style="height:auto;" th:if="${showLendeList} == 1">
+
+					<h1>Lista e Lendeve</h1>
+						<br> <br>
+					<form th:action="@{/dekani-form/listByLende}" method="post" >
+						<select class="px-5 py-1" th:name="dega" >
+						 	<option value="">Zgjidh degen</option>
+	                        <option th:each="f:${listDege}" th:value="${f.id}" th:text="${f.emri}"> </option>
+                        </select>
+                        <button type="submit" class="btn btn-outline-dark px-2 py-1"> Listo Lendet </button> 
+               		 </form>
+
+					<table border="1" class="table table-striped">
+						<thead class="thead-dark">
+							<tr>
+								 
+								<th>Emri</th>
+								<th>Kredite</th>
+								<th>Simestri</th>
+								<th>Dega</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="lenda: ${listLende}">
+								
+								<td th:text="${lenda.emri}">Branch Name</td>
+								<td th:text="${lenda.kredite}">Faculty</td>
+								<td th:text="${lenda.simestri}">Faculty</td>
+								<td th:text="${lenda.dega.emri}">Faculty</td>
+							</tr>
+						</tbody>
+					</table>
+ 				</div>	
+<!-- New Lende-->	
+ 		<div class="row justify-content-center">
+          <div class="col-md-10">			
+ 			 <div class="form-wrap1"  style="height:auto;" th:if="${showCreateNewLende} == 1">
+
+					<h1 align="center">Krijo nje Lende</h1>
+						<br> <br>
+					<form action="#" th:action="@{/saveLenda}" th:object="${lenda}" method="post">
+						  
+						<div class="row">
+							<div class="col-md-12 form-group">
+								<label >Emri:</label>
+							    <input type="text" th:field="*{emri}" class="form-control py-2">
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-md-12 form-group">
+								<label >Kredite:</label>
+							    <input type="text" th:field="*{kredite}" class="form-control py-2">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12 form-group">
+								<label >Simestri:</label>
+							    <input type="text" th:field="*{simestri}" class="form-control py-2">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12 form-group">
+								<label >Dega </label> 
+								<select th:field="*{dega}"id="name" class="form-control py-2">
+									<option th:each="b: ${listDege}" th:value="${b.id}" th:text="${b.emri}" />
+								</select>
+							</div>
+						</div>
+						 
+						<button type="submit" class="btn btn-primary px-5 py-2">Save</button>
+					</form>
+ 				</div>	
+ 			</div>
+ 		</div>
+<!-- list PEDAGOG -->
+			 	 <div class="form-wrap1" align="center" style="height:auto;" th:if="${showPedagogList} == 1">
+
+					<h1>Lista e Pedagogeve</h1>
+						<br> <br>
+					<form th:action="@{/dekani-form/listPedagogByDega}" method="post" >
+						<select class="px-5 py-1" th:name="dega" >
+						 	<option value="">Zgjidh degen</option>
+	                        <option th:each="f:${listDege}" th:value="${f.id}" th:text="${f.emri}"> </option>
+                        </select>
+                        <button type="submit" class="btn btn-outline-dark px-2 py-1"> Listo Pedagogeve </button> 
+               		 </form>
+
+					<table border="1" class="table table-striped">
+						<thead class="thead-dark">
+							<tr>
+								<th>ID</th>
+								<th>Emri</th>
+								<th>Mbiemri</th>
+								<th>Email</th>
+								 <th>Veprimet</th>  
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="p: ${listPedagog}">
+								<td th:text="${p.id}">branch ID</td>
+								<td th:text="${p.firstname}">Branch Name</td>
+								<td th:text="${p.lastname}">Faculty</td>
+								<td th:text="${p.email}">Faculty</td>
+								<td>
+								 <a th:href="@{'/Pedagog/edit/' + ${p.id}}">view</a>
+								 &nbsp;&nbsp;&nbsp;
+								 <a th:href="@{'/Pedagog/shtolend/' + ${p.id}}">shto lende</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+ 				</div>	
+<!-- New Pedagog-->	 	
+			<div class="row justify-content-center">
+          <div class="col-md-10">			
+ 			 <div class="form-wrap1"  style="height:auto;" th:if="${showCreateNewPedagog} == 1">
+
+					<h1 align="center">Krijo nje Pedagog</h1>
+						<br> <br>
+						
+			<form th:action="@{/listolendetsipasDeges}" method="post" >
+             		<div class="row">
+							<div class="col-md-12 form-group">
+								<label >Dega </label> 
+								<select class="form-control py-2" th:name="dega" >
+							 	 	<option th:each="f:${listDege}"  th:value="${f.id}" th:text="${f.emri}"> </option>
+                       		 	</select>
+                       			 <button type="submit" class="btn btn-outline-dark px-2 py-1"> Listo Lendet</button> 
+							</div>
+						</div>
+             </form>
+             <form th:action="@{/listolendetlist}" method="post" >
+             	<div class="row">
+					<div class="col-md-12 form-group">		
+             			<label>Lendet</label>
+						<select class="form-control py-2" th:name="lende" >
+						 	<option th:each="b: ${listLende}" th:value="${b.id}" th:text="${b.emri}"> </option>
+                        </select>
+                        <button type="submit" class="btn btn-outline-dark px-2 py-1"> Listo Lendet</button> 
+                     </div></div>
+              <table>
+              	<tr th:each="lend : ${list1}">
+              		<td>Lenda:</td>
+	            	<td th:text="${lend.emri}">student ID</td>
+            	</tr>
+            	<tr th:each="lend : ${list2}">
+            		<td>Dega:</td>
+	            	<td th:text="${lend.emri}">student ID</td>
+            	</tr>
+              </table>
+             </form>
+						
+					<form action="#" th:action="@{/savePedagog}" th:object="${pedagog}" method="post">
+						<input type="hidden" id="id" th:field="*{id}">
+						
+						<div class="row">
+							<div class="col-md-12 form-group">
+								<label >Emri:</label>
+							    <input type="text" th:field="*{firstname}" id="name" class="form-control py-2">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12 form-group">
+								<label >Mbiemri:</label>
+							    <input type="text" th:field="*{lastname}" id="name" class="form-control py-2">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12 form-group">
+								<label >E-mail:</label>
+							    <input type="text" th:field="*{email}" id="name" class="form-control py-2">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12 form-group">
+								<label >Password:</label>
+							    <input type="text" th:field="*{pass}" id="name" class="form-control py-2">
+							</div>
+						</div>
+						
+						<button type="submit" class="btn btn-primary px-5 py-2">Save</button>
+					</form>
+ 				</div>	
+ 			</div>
+ 		</div>		
+ 		
+<!-- New Sekretare-->	 	
+		<div class="row justify-content-center">
+          <div class="col-md-10">			
+ 			 <div class="form-wrap1"  style="height:auto;" th:if="${showCreateNewsekretare} == 1">
+
+					<h1 align="center">Krijo nje Sekretare</h1>
+						<br> <br>
+						
+			 	<form action="#" th:action="@{/saveSekretari}" th:object="${sekretari}" method="post">
+						<input type="hidden" id="id" th:field="*{id}">
+						
+						<div class="row">
+							<div class="col-md-12 form-group">
+								<label >Emri:</label>
+							    <input type="text" th:field="*{firstname}" id="name" class="form-control py-2">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12 form-group">
+								<label >Mbiemri:</label>
+							    <input type="text" th:field="*{lastname}" id="name" class="form-control py-2">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12 form-group">
+								<label >E-mail:</label>
+							    <input type="text" th:field="*{email}" id="name" class="form-control py-2">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12 form-group">
+								<label >Password:</label>
+							    <input type="text" th:field="*{pass}" id="name" class="form-control py-2">
+							</div>
+						</div>
+						
+						<button type="submit" class="btn btn-primary px-5 py-2">Save</button>
+					</form>
+ 				</div>	
+ 			</div>
+ 		</div>	
+ 		
+ 		
+ 		<!-- list Sekretare -->
+			 	 <div class="form-wrap1" align="center" style="height:auto;" th:if="${showlistSekretare} == 1">
+
+					<h1>Lista e Sekretareve</h1>
+						<br> <br>
+				 
+					<table border="1" class="table table-striped">
+						<thead class="thead-dark">
+							<tr>
+								<th>ID</th>
+								<th>Emri</th>
+								<th>Mbiemri</th>
+								<th>Email</th>
+								 <th>Veprimet</th>  
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="p: ${listSekretari}">
+								<td th:text="${p.id}">branch ID</td>
+								<td th:text="${p.firstname}">Branch Name</td>
+								<td th:text="${p.lastname}">Faculty</td>
+								<td th:text="${p.email}">Faculty</td>
+								<td>
+								 <a th:href="@{'/Sekretari/editdekani/' + ${p.id}}">view</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+ 				</div>	
+ 				
+ 				
+ 				
+<!--Mesazh-->	 
+  
+  <div class="form-wrap1" th:if="${showNewmesazhh} == 1">
+		 <h1 align="center"> Dergoni nje mesazh </h1> 
+		  
+		 <div id="center" class="col-md-8 pr-md-5">
+		 <form action="#" th:action="@{/saveMesazhDekani}" th:object="${mesazh}" method="post">
+				<div th:object="${dekani}" >
+					 <div class="form-group row">
+    					<label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+    					<div class="col-sm-10">
+      						<input type="text" readonly class="form-control-plaintext" th:field="*{email}" id="staticEmail" value="*{email}">
+   						 </div>
+  					</div>
+	            </div>
+	            <div class="form-group row">
+   					 <label for="inputPassword" class="col-sm-2 col-form-label">Email i marresit</label>
+    				<div class="col-sm-10">
+      					<input type="text" th:field="*{emailM}" class="form-control"   >
+    				</div>
+ 				 </div>
+	            <div class="form-group row">
+   					<label for="inputPassword" class="col-sm-2 col-form-label">Titulli</label>
+    				<div class="col-sm-10">
+      					<input type="text" class="form-control"   th:field="*{title}" >
+    				</div>
+  				</div> 
+  				<div class="row">
+					<div class="col-md-12 form-group">
+                      <label for="message">Write Message</label>
+                      <textarea name="message" th:field="*{subject}" id="message" class="form-control py-2" cols="30" rows="8"></textarea>
+                    </div>
+                </div>
+                <input id="newStudent" type="hidden"  th:field="*{dtDerg}" />
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                       <button type="submit" class="btn btn-primary ">Send Message</button>
+                    </div>
+                  </div>
+           
+										 
+		</form>	 
+		</div> 
+ </div> 
+   <!--Mesazh Derg List-->	  
+   <div  class="form-wrap1" style=" height:500px;overflow: auto;"align="center"th:if="${showMesDergg} == 1">
+
+					<h1>Mesazhe te derguara</h1>
+
+					<br />
+					
+					<table border="1" id="Table1"class="table table-striped">
+				        <thead class="thead-dark">
+				            <tr>
+				             
+				                <th>Email Derguesi</th>
+				                <th>Email Marresi</th>
+				                <th>Titulli</th>
+				                <th>Permbajtja</th>
+				                <th>Data e dergimit</th>
+				                <th>Veprimet</th>
+				                
+				                
+				            </tr>
+				        </thead>
+				        <tbody style="overflow: hidden;">
+				            <tr th:each="Mesazh : ${listMesazhe}">
+				            
+				            	 
+				        		<td th:text="${Mesazh.email}">firstName</td>  
+				                <td th:text="${Mesazh.emailM}">lastname</td>
+				                <td  class="Table1TD" th:text="${Mesazh.title}">pass</td>
+				                <td class="Table1TD" th:text="${Mesazh.subject}">pass</td>
+				                <td th:text="${Mesazh.dtDerg}">lastname</td>
+				              	<td><a th:href="@{'/Dekani/view/' + ${Mesazh.id}}">Shfaq</a></td>
+				            </tr>
+				        </tbody>
+   				 </table>
+				</div>
+ <!--Mesazhe te marra List-->	
+ 
+ <div  class="form-wrap1" style=" height:500px;overflow: auto;"align="center"th:if="${showMesMarrr} == 1">
+
+					<h1>Mesazhe te Marra</h1>
+
+					<br />
+					
+					<table border="1" id="Table2" class="table table-striped">
+				        <thead class="thead-dark">
+				            <tr>
+				            	 
+				                <th>Email Derguesi</th>
+				                <th>Email Marresi</th>
+				                <th>Titulli</th>
+				                <th>Permbajtja</th>
+				                <th>Data e dergimit</th>
+				                <th>Veprimet</th>
+				                
+				                
+				            </tr>
+				        </thead>
+				        <tbody style="overflow: hidden;">
+				            <tr th:each="Mesazh : ${listMesazhe}">
+				            
+				            	 
+				        		<td th:text="${Mesazh.email}">firstName</td>  
+				                <td th:text="${Mesazh.emailM}">lastname</td>
+				                <td class="Table1TD" th:text="${Mesazh.title}">pass</td>
+				                <td class="Table1TD"  th:text="${Mesazh.subject}">pass</td>
+				                <td th:text="${Mesazh.dtDerg}">lastname</td>
+				                <td><a th:href="@{'/Dekani/viewM/' + ${Mesazh.id}}">Shfaq</a></td>
+				            </tr>
+				        </tbody>
+   				 </table>
+				</div>
+  					
+		</div>
+	</div>
+</body>
+</html>
